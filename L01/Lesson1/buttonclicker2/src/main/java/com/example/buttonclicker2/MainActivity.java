@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnWhoAmI;
     private Button btnItIsNotMe ;
     private CheckBox cbOption;
+    boolean s = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,27 +33,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tvOut.setText("Мой номер по списку № 12");
-                if (cbOption.isChecked()) {
-                    Toast.makeText(MainActivity.this, "Кнопка нажата", Toast.LENGTH_SHORT).show();
-                } else {
-                    cbOption.setChecked(true);
-                    Toast.makeText(MainActivity.this, "Кнопка не нажата", Toast.LENGTH_SHORT).show();
-                }
+                s = true;
+                cbOption.setChecked(s);
             }
         };
         btnWhoAmI.setOnClickListener(oclBtnWhoAmI);
     }
         public void onBtnItIsNotMeClick(View view) {
+            tvOut.setText("Hello World!");
             Toast.makeText(this, "Это не я сделал", Toast.LENGTH_SHORT).show();
-            if (cbOption.isChecked()) {
-                cbOption.setChecked(false);
-                Toast.makeText(this, "Кнопка сброшена",
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Кнопка не была задействована",
-                        Toast.LENGTH_SHORT).show();
-            }
-
+            s = false;
+            cbOption.setChecked(s);
     }
 }
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
